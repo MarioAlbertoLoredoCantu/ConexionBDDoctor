@@ -22,32 +22,7 @@ namespace CRUD_Students2.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("CRUD_Students2.Entities.Doctor", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Edad")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("EspecialidadId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Sexo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EspecialidadId");
-
-                    b.ToTable("Doctors");
-                });
+          
 
             modelBuilder.Entity("CRUD_Students2.Entities.Especialidad", b =>
                 {
@@ -96,19 +71,6 @@ namespace CRUD_Students2.Migrations
                     b.ToTable("Students");
                 });
 
-            modelBuilder.Entity("CRUD_Students2.Entities.Doctor", b =>
-                {
-                    b.HasOne("CRUD_Students2.Entities.Especialidad", "Especialidad")
-                        .WithMany("Doctors")
-                        .HasForeignKey("EspecialidadId");
-
-                    b.Navigation("Especialidad");
-                });
-
-            modelBuilder.Entity("CRUD_Students2.Entities.Especialidad", b =>
-                {
-                    b.Navigation("Doctors");
-                });
 #pragma warning restore 612, 618
         }
     }

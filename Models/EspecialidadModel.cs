@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 namespace CRUD_Students2.Models
 {
     public class EspecialidadModel
@@ -13,7 +15,6 @@ public int Operacion { get; set; }
 public int TiempoOpera { get; set; }
 
 
-
-
     }
+
 }

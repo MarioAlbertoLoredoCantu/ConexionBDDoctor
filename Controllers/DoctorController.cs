@@ -1,6 +1,7 @@
 using CRUD_Students2.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CRUD_Students2.Controllers
 {
@@ -64,9 +65,18 @@ namespace CRUD_Students2.Controllers
 
                 _dbContext.Doctors.Add(docAdd);
                 _dbContext.SaveChanges();
+ Doctor dr = new Doctor();
+  dr.ListEspecialidad = _dbContext.Especialidades.ToList();
 
+  var selectListItems = _dbContext.Doctors.Select(p => new SelectListItem
+    {
+        Value = p.Id.ToString(),
+        Text = p.Nombre
+    }).ToList();
                 return RedirectToAction("DoctorList");
             }
+  
+            
             return View(model);
         }
 

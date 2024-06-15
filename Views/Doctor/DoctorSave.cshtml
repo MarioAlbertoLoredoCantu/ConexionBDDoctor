@@ -1,3 +1,5 @@
+@model DoctorModel
+
 @{
     ViewData["Title"] = "Editar la materia";
 }
@@ -26,6 +28,13 @@
     <input type="text" class="form-control" id="especialidad" name="especialidad"
     name="especialidad" placeholder="escriba la carrera" />
 </div>
+
+<Select class="form-select mb-3" asp-for="CategoriaId" asp-items="@Model.ListCategoria">
+<option> Seleccionar categoria</option>
+</Select>
+<select class="form-select mb-3" asp-for="EspecialidadId" asp-items="@Model.ListEspecialidad">
+<option> Seleccionar Especialidad</option>
+</select>
 <button type="submit" class="btn btn-primary">Guardar</button>
 <button type="submit" class="btn btn-secundary">cancelar</button>
 </form>

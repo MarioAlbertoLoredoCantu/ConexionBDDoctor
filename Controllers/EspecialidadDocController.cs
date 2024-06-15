@@ -13,8 +13,8 @@ namespace CRUD_Students2.Controllers
 
         public EspecialidadDocController(ILogger<EspecialidadDocController> logger, AplicationDbContext context)
         {
-            _logger = logger;
-            _dbContext = context;
+            this._logger = logger;
+            this._dbContext = context;
         }
  public IActionResult EspecialidadList()
         {
@@ -33,7 +33,7 @@ namespace CRUD_Students2.Controllers
             {
                 Id = s.Id,
                 Operacion = s.Operacion,
-                Especialidad1 = s.Especialidad1,
+                Especialidad1 = s.Nombre,
                 TiempoOpera = s.TiempoOpera
 
 
@@ -57,7 +57,7 @@ namespace CRUD_Students2.Controllers
                 {
                     Id = Guid.NewGuid(),
                     Operacion = model.Operacion,
-                Especialidad1 = model.Especialidad1,
+                Nombre = model.Especialidad1,
                 TiempoOpera = model.TiempoOpera
                 };
 
@@ -93,7 +93,7 @@ namespace CRUD_Students2.Controllers
             {
                 Id = espec.Id,
                   Operacion = espec.Operacion,
-                Especialidad1 = espec.Especialidad1,
+                Especialidad1 = espec.Nombre,
                 TiempoOpera = espec.TiempoOpera
             };
 
@@ -109,7 +109,7 @@ namespace CRUD_Students2.Controllers
                 {
                 
                      espec.Operacion = model.Operacion;
-                espec.Especialidad1 = model.Especialidad1;
+                espec.Nombre = model.Especialidad1;
                 espec.TiempoOpera = model.TiempoOpera;
                     _dbContext.SaveChanges();
                     return RedirectToAction("EspecialidadList");
